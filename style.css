@@ -1,0 +1,532 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url('fonts/arial.ttf') format('truetype');
+}
+
+html {
+    font-family: Arial;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.head__banner {
+    border-bottom: 1px solid black;
+    margin-bottom: 5rem;
+}
+
+.head__footer {
+    border-top: 1px solid black;
+    margin-top: 5rem;
+}
+
+header, footer {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+header div, footer div {
+    display: flex;
+}
+
+header div a, footer div a {
+    margin-left: 2rem;
+}
+
+#error-message, .error-message {
+    color: red;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+#generated-gif, #fixed-generated-gif {
+    box-shadow: 0px 0px 3px black;
+    margin-top: 1rem;
+}
+
+/*========================================================*/
+/*===================== PAGE INDEX.PHP =====================*/
+/*========================================================*/
+.form__index-gif {
+    background-color: #FFFFFF;
+    width: 100%;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="url"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #CCCCCC;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Styles pour les sections 'include', 'label', et 'include-color' */
+.include-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #F8F8F8;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.include-section input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.include-section label {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.include-section input[type="color"] {
+    margin-left: 10px;
+    border: 2px solid #CCCCCC;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Styles pour la couleur de fond */
+.background-color-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.background-color-section label {
+    margin: 0 0 10px 0;
+}
+
+.background-color-section input[type="color"] {
+    flex-grow: 1;
+    border: 2px solid #CCCCCC;
+    border-radius: 6px;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+}
+
+/* Styles pour le range slider */
+.include-section input[type="range"] {
+    width: 40%;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.include-section input:nth-child(4) {
+    width: 50px;
+    border: none;
+    background: none;
+    text-align: center;
+    margin: 0;
+}
+
+/* Styles pour le bouton 'Générer le GIF' */
+button#generate-gif, #generate-informations {
+    background-color: #3498DB;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    width: 100%;
+}
+
+button#generate-gif:hover {
+    background-color: #2980B9;
+    transform: scale(1.05);
+}
+
+button#generate-gif:active {
+    transform: scale(1);
+}
+
+#generate-informations {
+    margin-bottom: 1rem;
+}
+
+#rss-info-container p {
+    margin-bottom: 1rem;
+}
+
+#rss-info-container li {
+    margin-bottom: .5rem;
+    list-style: none;
+    margin-left: 1rem;
+}
+
+#rss-info-container li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #2980B9; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1rem; /* Also needed for space (tweak if needed) */
+}
+
+#rss-info-container li:last-child {
+    margin-bottom: 2rem;
+}
+
+#selected_elements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.draggable {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.draggable:last-child {
+    margin-bottom: 2rem;
+}
+
+.arrow {
+    background-color: #3498DB;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.arrow:hover {
+    background-color: #2980B9;
+}
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+/*========================================================*/
+/*===================== PAGE GIF.PHP =====================*/
+/*========================================================*/
+.download__button {
+    text-align: center;
+    width: 200px;
+    display: block;
+    padding: 1rem 2rem;
+    color: white;
+    background: black;
+    margin-top: 4rem;
+}
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+/*========================================================*/
+/*================== PAGE FIXEDGIF.PHP ===================*/
+/*========================================================*/
+.form__fixed-gif {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.form__fixed-gif input:last-child {
+    width: 200px;
+    margin-top: 2rem;
+}
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+/*========================================================*/
+/*==================== PAGE DASHBOARD ====================*/
+/*========================================================*/
+.wrapper__dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5rem;
+}
+
+.inside__wrapper__dashboard__left {
+    width: 100%;
+}
+
+.inside__wrapper__dashboard__left p {
+    margin-top: 1.5rem;
+}
+
+.inside__wrapper__dashboard__fixedgif {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inside__wrapper__dashboard__fixedgif div:first-child {
+    flex-basis: 90%;
+    overflow: hidden;
+}
+
+.inside__wrapper__dashboard__fixedgif div:last-child {
+    flex-basis: 10%;
+    width: 100%;
+    margin-left: 1.5rem;
+    background: grey;
+    height: 3.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.inside__wrapper__dashboard__fixedgif div img {
+    margin: 1rem 0 0 3px;
+    box-shadow: 0px 0px 3px black;
+}
+
+.dashboard__wrapper__item__gif {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard__wrapper__item__gif a {
+    width: 70%;
+}
+
+.dashboard__wrapper__item__gif a img {
+    width: 100%;
+}
+
+.inside__wrapper__item__gif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inside__wrapper__item__gif div {
+    margin-left: 1.5rem;
+    background: blue;
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inside__wrapper__item__gif div:nth-child(2) {
+    background: orange;
+}
+
+.inside__wrapper__item__gif div:last-child {
+    background: red;
+}
+
+.edit__item__gif,
+.delete__item__gif,
+.add__item__gif,
+.download__item__gif {
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.edit__item__gif {
+    background-image: url("assets/edit-svgrepo-com.svg");
+}
+
+.add__item__gif {
+    background-image: url("assets/file-addition-solid-svgrepo-com.svg");
+}
+
+.delete__item__gif {
+    background-image: url("assets/delete-svgrepo-com.svg");
+}
+
+.download__item__gif {
+    background-image: url("assets/download-circle-svgrepo-com.svg");
+}
+
+.item__gif {
+    box-shadow: 0px 0px 3px black;
+}
+
+.logout__button {
+    text-align: center;
+    width: 150px;
+    display: block;
+    padding: 1rem 2rem;
+    color: white;
+    background: red;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-content textarea {
+    width: 100%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
+
+/*========================================================*/
+/*============ PAGE REGISTER.PHP/LOGIN.PHP ===============*/
+/*========================================================*/
+.wrapper__login, .wrapper__register {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 500px;
+}
+
+.wrapper__login h1, .wrapper__register h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.wrapper__login form, .wrapper__register form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.wrapper__login form label, .wrapper__register form label {
+    font-size: 18px;
+    color: #333;
+}
+
+.wrapper__login form input[type="text"], .wrapper__login form input[type="email"], .wrapper__login form input[type="password"] {
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+.wrapper__register form input[type="text"], .wrapper__register form input[type="email"], .wrapper__register form input[type="password"] {
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+}
+
+input[type="submit"] {
+    padding: 0.5rem;
+    font-size: 18px;
+    color: #fff;
+    background-color: #3498DB;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980B9;
+}
+
+/*========================================================*/
+/*========================================================*/
+/*========================================================*/
