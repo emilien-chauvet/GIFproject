@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Arial';
+    src: url('fonts/arial.ttf') format('truetype');
+}
+
+html {
+    font-family: Arial;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.head__banner {
+    border-bottom: 1px solid black;
+    margin-bottom: 5rem;
+}
+
+.head__footer {
+    border-top: 1px solid black;
+    margin-top: 5rem;
+}
+
+header, footer {
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+header div, footer div {
+    display: flex;
+}
+
+header div a, footer div a {
+    margin-left: 2rem;
+}
+
+.wrapper__dashboard table {
+    width: 100%; /* Faites en sorte que le tableau occupe toute la largeur du container */
+    border-collapse: collapse; /* Supprimer l'espacement entre les bordures des cellules */
+}
+
+.wrapper__dashboard th,
+.wrapper__dashboard td {
+    border: 1px solid #ccc; /* Ajouter une bordure aux cellules du tableau */
+    padding: 8px; /* Ajouter un peu d'espace autour du contenu des cellules */
+    text-align: left; /* Aligner le texte à gauche */
+}
+
+.wrapper__dashboard th {
+    background-color: #f2f2f2; /* Ajouter une couleur d'arrière-plan aux en-têtes de colonnes */
+    font-weight: bold; /* Rendre le texte des en-têtes de colonnes gras */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid #333;
+}
+
+.pagination a.active,
+.pagination a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.wrapper__dashboard img {
+    box-shadow: 0px 0px 3px black;
+}
+
+.wrapper__dashboard__statistics .inside__wrapper__dashboard__top, .wrapper__dashboard__statistics .inside__wrapper__dashboard__bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+.inside__wrapper__dashboard__top div, .inside__wrapper__dashboard__bottom div {
+    flex-basis: 25%;
+    background: #F0F0F2;
+    height: 10rem;
+    width: 10rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.inside__wrapper__dashboard__top div p:nth-child(2), .inside__wrapper__dashboard__bottom div p:nth-child(2) {
+    font-size: 3rem;
+}
+
+.activity-log {
+    margin-top: 4rem;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+.log-header {
+    font-weight: bold;
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.log-cell {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style pour le titre */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Style pour la table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style pour la tête du tableau */
+thead {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Style pour les cellules du tableau */
+td, th {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Style pour les cellules de la tête du tableau */
+th {
+    background-color: #f2f2f2;
+}
+
+/* Style pour les lignes de données */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style pour le lien "Voir le ticket" */
+table a {
+    color: #fff;
+    background-color: #007bff;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Style pour les informations du ticket */
+p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
